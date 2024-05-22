@@ -12,3 +12,25 @@
 # You have been provided with a dataset called schools.csv, which is previewed below.
 
 # You have been tasked with answering three key questions about New York City (NYC) public school SAT performance.
+
+
+# Import pandas
+import pandas as pd
+
+# Read the data
+schools = pd.read_csv("schools.csv")
+
+# Preview the data
+schools.head()
+
+# -------------------------------------------------------------------------------------------------------------------
+# QUESTION 1: Which NYC schools have the best math results?
+
+# The best math results are at least 80% of the *maximum possible score of 800* for math.
+best_math_results = schools["average_math"] >= .8 * 800
+
+# Columns to show
+cols_to_subset_avg_math = ["school_name", "average_math"]
+
+# Save the results in a pandas DataFrame and sort it by "average_math" in descending order.
+best_math_schools = schools.loc[best_math_results, cols_to_subset_avg_math].sort_values("average_math", ascending=False)
