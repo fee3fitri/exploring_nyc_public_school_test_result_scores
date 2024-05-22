@@ -34,3 +34,19 @@ cols_to_subset_avg_math = ["school_name", "average_math"]
 
 # Save the results in a pandas DataFrame and sort it by "average_math" in descending order.
 best_math_schools = schools.loc[best_math_results, cols_to_subset_avg_math].sort_values("average_math", ascending=False)
+
+# -------------------------------------------------------------------------------------------------------------------
+# QUESTION 2: What are the top 10 performing schools based on the combined SAT scores?
+# The combined SAT score refers to the sum of the scores from: Math, Reading, and Writing.
+
+# Create new "total_SAT" column
+schools["total_SAT"] = schools["average_math"] + schools["average_reading"] + schools["average_writing"]
+
+# Columns to show
+cols_to_subset_total_sat = ["school_name", "total_SAT"]
+
+# Save the results as a pandas DataFrame with results ordered by "total_SAT" in descending order.
+schools_total_sat_srt = schools.loc[:, cols_to_subset_total_sat].sort_values("total_SAT", ascending=False)
+
+# Find top 10 SAT score schools
+top_10_schools = schools_total_sat_srt.head(10)
