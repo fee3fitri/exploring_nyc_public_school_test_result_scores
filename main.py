@@ -35,6 +35,8 @@ cols_to_subset_avg_math = ["school_name", "average_math"]
 # Save the results in a pandas DataFrame and sort it by "average_math" in descending order.
 best_math_schools = schools.loc[best_math_results, cols_to_subset_avg_math].sort_values("average_math", ascending=False)
 
+print(best_math_schools)
+
 # -------------------------------------------------------------------------------------------------------------------
 # QUESTION 2: What are the top 10 performing schools based on the combined SAT scores?
 # The combined SAT score refers to the sum of the scores from: Math, Reading, and Writing.
@@ -50,6 +52,7 @@ schools_total_sat_srt = schools.loc[:, cols_to_subset_total_sat].sort_values("to
 
 # Find top 10 SAT score schools
 top_10_schools = schools_total_sat_srt.head(10)
+print(top_10_schools)
 
 # -------------------------------------------------------------------------------------------------------------------
 # QUESTION 3: Which single borough has the largest standard deviation in the combined SAT score?
@@ -77,3 +80,5 @@ largest_std_dev["num_schools"] = number_of_borough_schools
 
 # Find the mean of "total_SAT" in the borough and set it to the new column
 largest_std_dev["average_SAT"] = borough_schools["total_SAT"].mean().round(2)
+
+print(largest_std_dev)
